@@ -10,6 +10,9 @@ class Snake
 
     @vel_x = 0
     @vel_y = 0
+
+    @tail = 3
+    @position = []
   end
 
   def update
@@ -21,16 +24,25 @@ class Snake
     
     @x = SnakeGame::WIDTH_IN_TILE  if @x < 0
     @y = SnakeGame::WIDTH_IN_TILE  if @y < 0
+
+    @position << [@x, @y]
+    @position.shift until @position.size <= @tail
   end
 
   def draw
-    Gosu.draw_rect(
-      @x * SnakeGame::TILE,
-      @y * SnakeGame::TILE,
-      SnakeGame::TILE,
-      SnakeGame::TILE,
-      Gosu::Color::GREEN
-    )
+    @position.each do |x, y|
+      Gosu.draw_rect(
+        x * SnakeGame::TILE,
+        y * SnakeGame::TILE,
+        SnakeGame::TILE - 1,
+        SnakeGame::TILE - 1,
+        Gosu::Color::GREEN
+      )
+    end
+  end
+
+  def increase
+    @tail += 1
   end
 
   def up;    @vel_x =  0; @vel_y = -1;  end
