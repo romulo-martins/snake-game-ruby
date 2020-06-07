@@ -3,9 +3,9 @@
 require 'gosu'
 
 class SnakeGame < Gosu::Window
-  WIDTH = 400
+  WIDTH  = 400
   HEIGHT = 400
-  TILE = 10
+  TILE   = 10
 
   WIDTH_IN_TILE = WIDTH / TILE
 
@@ -47,6 +47,12 @@ class Snake
   def update
     @x += @vel_x
     @y += @vel_y
+
+    @x = 0 if @x > SnakeGame::WIDTH_IN_TILE
+    @y = 0 if @y > SnakeGame::WIDTH_IN_TILE
+    
+    @x = SnakeGame::WIDTH_IN_TILE  if @x < 0
+    @y = SnakeGame::WIDTH_IN_TILE  if @y < 0
   end
 
   def draw
