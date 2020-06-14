@@ -18,4 +18,4 @@ bundle install
 ruby game.rb
 ```
 
-To leaft the program `ctrl+C`
+To leave the program `ctrl+c`
