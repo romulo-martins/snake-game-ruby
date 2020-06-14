@@ -2,7 +2,9 @@ require 'gosu'
 require_relative 'snake_game'
 
 class Snake
-    attr_accessor :x, :y
+  attr_accessor :x, :y
+
+  MIN_TAIL_SIZE = 3
 
   def initialize
     @x = 10
@@ -11,7 +13,7 @@ class Snake
     @vel_x = 0
     @vel_y = 0
 
-    @tail = 3
+    @tail = MIN_TAIL_SIZE
     @position = []
   end
 
@@ -43,6 +45,13 @@ class Snake
 
   def increase
     @tail += 1
+  end
+
+  def self_colide?
+    return false if @position.empty?
+    head = @position[0]
+    tail = @position[1..]
+    tail && tail.include?(head)
   end
 
   def up;    @vel_x =  0; @vel_y = -1;  end
