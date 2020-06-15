@@ -1,6 +1,6 @@
 # Snake Game
 
-A simple snake game written in the ruby programming language, using the gosu library.
+A simple snake game written in the ruby programming language, using the gosu library. Based on [Pothix tutorial](https://youtu.be/bcQaQVJkVbw).
 
 <img src="media/snake_screen.png" alt="drawing" width="250" height="250" />
 
